@@ -58,7 +58,7 @@ RSpec.describe "Tenants", type: :request do
       before { post '/tenants', params: valid_attributes }
 
       it 'creates a todo' do
-        expect(json['title']).to eq('Cristiano Ronaldo')
+        expect(json['name']).to eq('Cristiano Ronaldo')
       end
 
       it 'returns status code 201' do
@@ -75,7 +75,7 @@ RSpec.describe "Tenants", type: :request do
 
       it 'returns a validation failure message' do
         expect(response.body)
-          .to match(/Validation failed: Created by can't be blank/)
+          .to match(/Validation failed: Name can't be blank, Email can't be blank, Phone can't be blank/)
       end
     end
   end
@@ -99,7 +99,7 @@ RSpec.describe "Tenants", type: :request do
 
   # Test suite for DELETE /todos/:id
   describe 'DELETE /todos/:id' do
-    before { delete "/todos/#{tenant_id}" }
+    before { delete "/tenants/#{tenant_id}" }
 
     it 'returns status code 204' do
       expect(response).to have_http_status(204)
