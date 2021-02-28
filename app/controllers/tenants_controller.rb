@@ -3,9 +3,11 @@ class TenantsController < ApplicationController
   include Response
   include ExceptionHandler
 
+  has_scope :by_name, :by_email, :by_phone
+
   # GET /tenants
   def index
-    @tenants = Tenant.all
+    @tenants = apply_scopes(Tenant).all
     json_response(@tenants)
   end
 
