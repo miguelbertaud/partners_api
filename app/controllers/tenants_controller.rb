@@ -3,7 +3,9 @@ class TenantsController < ApplicationController
   include Response
   include ExceptionHandler
 
-  has_scope :by_name, :by_email, :by_phone
+  has_scope :by_name
+  has_scope :by_email
+  has_scope :by_phone
 
   # GET /tenants
   def index

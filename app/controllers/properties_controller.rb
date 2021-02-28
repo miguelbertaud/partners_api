@@ -4,6 +4,10 @@ class PropertiesController < ApplicationController
   include Response
   include ExceptionHandler
 
+  has_scope :by_name, only: [:index]
+  has_scope :by_price, only: [:index]
+  has_scope :by_status, only: [:index]
+
   # GET /tenants/:tenant_id/properties
   def index
     json_response(@tenant.properties)
