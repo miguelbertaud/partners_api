@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :tenant do
-    name { "MyString" }
-    email { "MyString" }
-    phone { "MyString" }
+    name { Faker::Name.unique.name }
+    email { Faker::Internet.email }
+    phone { Faker::PhoneNumber.phone_number }
   end
 end
