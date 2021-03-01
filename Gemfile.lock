@@ -60,6 +60,7 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
+    available_time (0.1.1)
     bootsnap (1.7.2)
       msgpack (~> 1.0)
     builder (3.2.4)
@@ -183,6 +184,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  available_time
   bootsnap (>= 1.4.4)
   byebug
   database_cleaner-active_record (~> 2.0.0)
