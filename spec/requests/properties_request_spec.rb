@@ -63,7 +63,7 @@ RSpec.describe "Properties", type: :request do
 
   # Test suite for POST /tenants/:tenant_id/properties
   describe 'POST /tenants/:tenant_id/properties' do
-    let(:valid_attributes) { { name: 'Roma Norte', description: "Lorem Impusium", rental_price: 1234.12, status: 1 } }
+    let(:valid_attributes) { { name: 'Roma Norte', description: "Lorem Impusium", rental_price: 1234.12, status: "available" } }
 
     context 'when request attributes are valid' do
       before { post "/tenants/#{tenant_id}/properties", params: valid_attributes }

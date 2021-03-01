@@ -10,7 +10,7 @@ class PropertiesController < ApplicationController
 
   # GET /tenants/:tenant_id/properties
   def index
-    json_response(@tenant.properties)
+    json_response(@tenant.properties.not_published)
   end
 
   # GET /tenants/:tenant_id/properties/:id

@@ -1,6 +1,9 @@
 class Property < ApplicationRecord
   belongs_to :tenant
 
+  #enum
+  enum status: %i[published available deleted], _default: "available"
+
   # validation
   validates_presence_of :name, :description, :rental_price, :status
 
