@@ -1,8 +1,11 @@
 class PropertiesController < ApplicationController
   before_action :set_tenant
   before_action :set_tenant_property, only: [:show, :update, :destroy]
+  before_action :authenticate, only: [ :index_published ]
   include Response
   include ExceptionHandler
+
+  TOKEN = "secret"
 
   has_scope :by_name, only: [:index]
   has_scope :by_price, only: [:index]
@@ -11,6 +14,10 @@ class PropertiesController < ApplicationController
   # GET /tenants/:tenant_id/properties
   def index
     json_response(@tenant.properties.not_published)
+  end
+
+  def index_published
+    json_response(@tenant.properties.published)
   end
 
   # GET /tenants/:tenant_id/properties/:id
@@ -37,6 +44,14 @@ class PropertiesController < ApplicationController
   end
 
   private
+
+  def authenticate
+    authenticate_or_request_with_http_token do |token, options|
+      # Compare the tokens in a time-constant manner, to mitigate
+      # timing attacks.
+      ActiveSupport::SecurityUtils.secure_compare(token, TOKEN)
+    end
+  end
 
   def property_params
     params.permit(:name, :description, :rental_price, :status)
