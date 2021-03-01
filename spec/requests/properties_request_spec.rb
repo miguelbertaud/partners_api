@@ -124,4 +124,12 @@ RSpec.describe "Properties", type: :request do
       expect(response).to have_http_status(204)
     end
   end
+
+  # Test suite for GET /tenants/:tenant_id/properties-published
+  describe 'GET /tenants/:tenant_id/properties-published' do
+    authorization = ActionController::HttpAuthentication::Token.encode_credentials("secret")
+    before { get "/tenants/#{tenant_id}/properties-published", headers: { 'HTTP_AUTHORIZATION' => authorization } }
+
+    it { expect(response).to be_successful }
+  end
 end

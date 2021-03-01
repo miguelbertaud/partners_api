@@ -4,6 +4,8 @@ class PropertiesController < ApplicationController
   before_action :authenticate, only: [ :index_published ]
   include Response
   include ExceptionHandler
+  include ActionController::HttpAuthentication::Basic::ControllerMethods
+  include ActionController::HttpAuthentication::Token::ControllerMethods
 
   TOKEN = "secret"
 
