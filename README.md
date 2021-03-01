@@ -107,3 +107,15 @@ rails routes
 rails s
 
 ```
+
+## Filter
+
+```shell
+
+/tenants
+#=> acts like a normal request
+
+/tenants?by_name=test
+#=> calls the named scope and bring that specific name
+
+```
